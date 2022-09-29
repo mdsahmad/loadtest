@@ -1,0 +1,18 @@
+name: TOP10SONG
+
+on:
+  push:
+   branches: [ main ]
+      
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build & Push Image
+      run: |
+        echo "${{ secrets.DOCKERPW }}" | docker login -u "mdshahidahmad" --password-stdin
+        docker image build -t mdshahidahmad/top10song:v1 .
+        docker push mdshahidahmad/top10song:v1
