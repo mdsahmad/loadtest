@@ -15,6 +15,6 @@ jobs:
     steps:
       - name: Group of log lines
         run: |
-            echo "::group::My title"
+            sysbench --test=cpu --time=60 run
             echo "Inside group"
             echo "::endgroup::"
